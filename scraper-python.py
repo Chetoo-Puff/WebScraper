@@ -21,7 +21,7 @@ def scrapeGame():
     all_data = []
 
     # Loop through all tables
-    for idx, table in enumerate(tables):
+    for index, table in enumerate(tables):
         rows = []
 
         # Extract all rows
@@ -35,12 +35,12 @@ def scrapeGame():
             headers = rows[0]  # Take the first row as the header
             rows = rows[1:]  # Remaining rows are data
             all_data.append({"headers": headers, "rows": rows})
-            print(f"Table {idx + 1} Headers: {headers}")
+            print(f"Table {index + 1} Headers: {headers}")
             for row in rows:
                 print(row)
 
     # Save all tables to CSV
-    for idx, table_data in enumerate(all_data):
+    for index, table_data in enumerate(all_data):
         rows = table_data["rows"]
         headers = table_data["headers"]
 
@@ -49,9 +49,9 @@ def scrapeGame():
 
         # Create DataFrame
         df = pd.DataFrame(adjusted_rows, columns=headers)
-        filename = f"table_{idx + 1}.csv"
+        filename = f"table_{index + 1}.csv"
         df.to_csv(filename, index=False)
-        print(f"Saved Table {idx + 1} as {filename}")
+        print(f"Saved Table {index + 1} as {filename}")
 
 
 if __name__ == '__main__':
